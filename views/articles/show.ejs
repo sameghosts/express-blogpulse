@@ -6,6 +6,19 @@
 
 <p><%= article.content %></p>
 
+<!-- <p><%= article.author.getFullName() %></p> -->
 <hr />
-
+<% article.comments.forEach(comment => { %>
+  <p><strong><%= comment.author %></strong></p>
+  </br>
+  <p><%= comment.content %></p>
+  <% }) %>
+<hr />
+<h3>Add new comment:</h3>
+  <form method="POST" action="/:id">
+    Name: <input type="text" name="author">
+    Comment:<input type="text" name="content">
+    <input type="hidden" name="articleId" value="<%= article.id %>">
+    <input type="submit">
+  </form>
 <a href="/">&larr; Back Home</a>
